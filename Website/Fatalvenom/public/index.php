@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/Website/Fatalvenom/frontend/styles/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title>Fatal Venom</title>
 </head>
@@ -17,23 +17,11 @@
         <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="button.png" width="50px" height="50px">
         </button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu"> <!--  Categoria das roupas aqui!!!  -->
                 <li><a class="dropdown-item" href="#">Home</a></li>
                 <li><a class="dropdown-item" href="#">Sobre</a></li>
-                <li><a class="dropdown-item" href="#">Login</a></li>
                 <li><a class="dropdown-item" href="#">Carrinho</a></li>
         </ul>
-        </div>
-
-        <div class="collapse" id="collapseExample">
-        <div class="card card-body">
-            <ul id="menu" class="menu1">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Carrinho</a></li>
-            </ul>
-        </div>
         </div>
 
         <div class="container-fluid">
@@ -43,7 +31,7 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto me-3">
-                    <li class="nav-item me-3"><a class="nav-link active" href="#">Login</a></li>
+                    <li class="nav-item me-3"><a class="nav-link active" href="/Website/Fatalvenom/app/views/login.html">Login</a></li>
                     <li class="nav-item me-3"><a class="nav-link" href="#">Sobre</a></li>
                     <li class="nav-item me-3"><a class="nav-link" href="#">Carrinho</a></li>
                 </ul>
@@ -55,7 +43,7 @@
 
 <!--Conteúdo principal n1-->
 
-<div class="content1"> <!-- Colocar imagem do mesmo tamanho -->>
+<div class="content1"> <!-- Colocar imagem do mesmo tamanho -->
 
     <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
         <div class="carousel-inner">
