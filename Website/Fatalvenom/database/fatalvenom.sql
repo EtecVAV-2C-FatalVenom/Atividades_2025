@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `fatalvenom`
 --
+CREATE DATABASE fatalvenom;
+USE fatalvenom;
 
 -- --------------------------------------------------------
 
