@@ -84,7 +84,7 @@ if (!$produto) {
 
         <div class="header-buttons">
             <?php if ($logado): ?>
-                <a class="btn btn-outline-light" href="perfil.php">Perfil</a>
+                <a class="btn btn-outline-light" href="../../public/perfil.php">Perfil</a>
             <?php else: ?>
                 <a class="btn btn-outline-light" href="../login.php">Login</a>
             <?php endif; ?>

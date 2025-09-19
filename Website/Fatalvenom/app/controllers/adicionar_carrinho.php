@@ -5,6 +5,13 @@ include_once("../../database/conexao.php");
 header("Cache-Control: no-cache, must-revalidate");
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 
+//aqui tem que deixar bonito michele VVV
+if (!isset($_SESSION['email'])) {
+    echo "<p>Você precisa estar logado para adicionar itens ao carrinho.</p>";
+    echo '<a href="/Site2025/Atividades_2025/Website/Fatalvenom/app/views/login.php">Fazer login</a>';
+    exit;
+}
+
 if (!isset($_SESSION['carrinho'])) {
     $_SESSION['carrinho'] = [];
 }
