@@ -1,9 +1,16 @@
+<?php
+session_start();
+include_once("../database/conexao.php");
+
+$logado = isset($_SESSION['id']);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Website/Fatalvenom/frontend/styles/style.css">
+    <link rel="stylesheet" href="assets/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title>Fatal Venom</title>
 </head>
@@ -15,7 +22,7 @@
 
         <div class="dropdown">
         <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="button.png" width="50px" height="50px">
+            <img src="assets/imagens/button.png" width="50px" height="50px">
         </button>
         <ul class="dropdown-menu"> <!--  Categoria das roupas aqui!!!  -->
                 <li><a class="dropdown-item" href="#">Home</a></li>
@@ -26,12 +33,19 @@
 
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="logo.png" alt="Logo" width="120" height="120">
+                <img src="assets/imagens/logo.png" alt="Logo" width="120" height="120">
             </a>
-
+            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto me-3">
-                    <li class="nav-item me-3"><a class="nav-link active" href="/Website/Fatalvenom/app/views/login.html">Login</a></li>
+
+                    <?php if ($logado): ?>
+                      <li class="nav-item me-3"><a class="nav-link active" href="perfil.php">Perfil</a></li>
+                    <?php else: ?>
+                      <li class="nav-item me-3"><a class="nav-link active" href="../app/views/login.php">Login</a></li>
+                    <?php endif; ?>
+
+                    
                     <li class="nav-item me-3"><a class="nav-link" href="#">Sobre</a></li>
                     <li class="nav-item me-3"><a class="nav-link" href="#">Carrinho</a></li>
                 </ul>
@@ -48,13 +62,13 @@
     <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="granulado.jpg" class="d-block w-100" alt="...">
+            <img src="assets/imagens/granulado.jpg" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="granulado.jpg" class="d-block w-100" alt="...">
+            <img src="assets/imagens/granulado.jpg" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="granulado.jpg" class="d-block w-100" alt="...">
+            <img src="assets/imagens/granulado.jpg" class="d-block w-100" alt="...">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
@@ -77,7 +91,7 @@
         <div class="col">
             <div class="card">
               <a href="">
-              <img src="modelos1.png" class="card-img-top" alt="...">
+              <img src="assets/imagens/modelos1.png" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
@@ -88,7 +102,7 @@
         <div class="col">
             <div class="card">
               <a href="">
-              <img src="modelos1.png" class="card-img-top" alt="...">
+              <img src="assets/imagens/modelos1.png" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
@@ -99,7 +113,7 @@
         <div class="col">
           <div class="card">
             <a href="">
-            <img src="modelos1.png" class="card-img-top" alt="...">
+            <img src="assets/imagens/modelos1.png" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
