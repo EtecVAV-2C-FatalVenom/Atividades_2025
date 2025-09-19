@@ -87,8 +87,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="card-body">
           <h5 class="card-title">Login</h5>
           <form action="login.php" method="post">
-            <input type="email" name="email" id=""email>
-            <input type="password" name="senha" id="senha">
+            <input type="email" name="email" id="email" placeholder="Email">
+            <input type="password" name="senha" id="senha"placeholder="Senha">
             <input value="Entrar" type="submit" name="entrar" id="entrar" class="btn btn-primary">
             <?php if (!empty($mensagem)) : ?>
                 <span><?php echo $mensagem; ?></span>
