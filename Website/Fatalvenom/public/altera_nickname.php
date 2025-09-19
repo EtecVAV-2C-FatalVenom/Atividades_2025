@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($stmt->execute()) {
             $sucesso = "Nickname atualizado com sucesso!";
-            $_SESSION['nickname'] = $novoNickname; // atualiza sessão
+            $_SESSION['nickname'] = $novoNickname; 
         } else {
             $erro = "Erro ao atualizar nickname.";
         }
