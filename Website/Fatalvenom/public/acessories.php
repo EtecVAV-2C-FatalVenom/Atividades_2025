@@ -3,6 +3,9 @@ session_start();
 include_once("../database/conexao.php");
 
 $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'Acessorios';
+
+$logado = isset($_SESSION['id']);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,8 +21,12 @@ $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'Acessorios';
         <h1 class="title"><?php echo ucfirst($categoria); ?> - Fatal Venom</h1>
 
         <div class="header-buttons">
-            <button class="btn btn-primary">Login</button>
-            <a href="/Site2025/Atividades_2025/Website/Fatalvenom/app/views/carrinho.php" class="btn btn-outline-light">Carrinho</a>
+            <?php if ($logado): ?>
+                <a class="btn btn-outline-light" href="perfil.php">Perfil</a>
+            <?php else: ?>
+                <a class="btn btn-outline-light" href="../app/views/login.php">Login</a>
+            <?php endif; ?>
+            <a href="../app/views/carrinho.php" class="btn btn-outline-light">Carrinho</a>
         </div>
     </div>
 
@@ -39,8 +46,9 @@ $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'Acessorios';
                     <div class='card-body'>
                         <h5 class='card-title'>{$produto['nome']}</h5>
                         <p class='card-text'>R$ " . number_format($produto['preco'], 2, ',', '.') . "</p>
-                        <form method='POST' action='/Site2025/Atividades_2025/Website/Fatalvenom/app/controllers/adicionar_carrinho.php'>
+                        <form method='POST' action='../app/controllers/adicionar_carrinho.php'>
                             <input type='hidden' name='id' value='{$produto['id']}'>
+                            <input type='hidden' name='pagina' value='{$_SERVER['REQUEST_URI']}'>
                             <button type='submit' class='btn btn-dark'>Adicionar ao Carrinho</button>
                         </form>
                     </div>

@@ -3,6 +3,8 @@ session_start();
 include_once("../database/conexao.php");
 
 $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'Camisa';
+
+$logado = isset($_SESSION['id']);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,13 +20,18 @@ $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'Camisa';
         <h1 class="title"><?php echo ucfirst($categoria); ?> - Fatal Venom</h1>
 
         <div class="header-buttons">
-            <button class="btn btn-primary">Login</button>
-            <a href="/Site2025/Atividades_2025/Website/Fatalvenom/app/views/carrinho.php" class="btn btn-outline-light">Carrinho</a>
+            <?php if ($logado): ?>
+                <a class="btn btn-outline-light" href="perfil.php">Perfil</a>
+            <?php else: ?>
+                <a class="btn btn-outline-light" href="../app/views/login.php">Login</a>
+            <?php endif; ?>
+            <a href="../app/views/carrinho.php" class="btn btn-outline-light">Carrinho</a>
         </div>
     </div>
 
     <div class="produtos">
         <?php
+
         $sql = "SELECT id, nome, preco, imagem FROM produto WHERE categoria = ?";
         $stmt = mysqli_prepare($conexao, $sql);
         mysqli_stmt_bind_param($stmt, "s", $categoria);
@@ -35,12 +42,17 @@ $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'Camisa';
             while ($produto = mysqli_fetch_assoc($result)) {
                 echo "
                 <div class='card'>
-                    <img src='{$produto['imagem']}' alt='{$produto['nome']}'>
+                    <a href='../app/views/produto_detalhes.php?id={$produto['id']}'>
+                        <img src='{$produto['imagem']}' alt='{$produto['nome']}'>
+                    </a>
                     <div class='card-body'>
-                        <h5 class='card-title'>{$produto['nome']}</h5>
+                        <a href='../app/views/produto_detalhes.php?id={$produto['id']}'>
+                            <h5 class='card-title'>{$produto['nome']}</h5>
+                        </a>
                         <p class='card-text'>R$ " . number_format($produto['preco'], 2, ',', '.') . "</p>
-                        <form method='POST' action='/Site2025/Atividades_2025/Website/Fatalvenom/app/controllers/adicionar_carrinho.php'>
+                        <form method='POST' action='../app/controllers/adicionar_carrinho.php'>
                             <input type='hidden' name='id' value='{$produto['id']}'>
+                            <input type='hidden' name='pagina' value='{$_SERVER['REQUEST_URI']}'>
                             <button type='submit' class='btn btn-dark'>Adicionar ao Carrinho</button>
                         </form>
                     </div>

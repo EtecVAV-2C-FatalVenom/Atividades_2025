@@ -90,10 +90,10 @@ $logado = isset($_SESSION['id']);
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
             <div class="card">
-              <a href="">
+              <a href="shirts.php">
               <img src="assets/imagens/modelos1.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Shirts</h5>
                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
               </a>
               </div>
@@ -101,10 +101,10 @@ $logado = isset($_SESSION['id']);
         </div>
         <div class="col">
             <div class="card">
-              <a href="">
+              <a href="pants.php">
               <img src="assets/imagens/modelos1.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Pants</h5>
                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
               </a>
               </div>
@@ -112,10 +112,10 @@ $logado = isset($_SESSION['id']);
         </div>
         <div class="col">
           <div class="card">
-            <a href="">
+            <a href="acessories.php">
             <img src="assets/imagens/modelos1.png" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
+              <h5 class="card-title">Acessories</h5>
               <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
             </a>
             </div>
