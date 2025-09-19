@@ -2,7 +2,7 @@
 session_start();
 include_once("../database/conexao.php");
 
-$categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'Camisa';
+$categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'Acessorios';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
