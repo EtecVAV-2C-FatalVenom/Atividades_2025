@@ -54,9 +54,9 @@ if (!isset($_SESSION['nome']) || $_SESSION['cargo'] !== 'Administrador' && $_SES
                 <a href="/app/views/usuarios.php" class="button">Acessar</a>
             </div>
             <div class="action-card">
-                <h2>Visualizar Relatórios</h2>
-                <p>Acesse relatórios de atividades e desempenho.</p>
-                <a href="/app/views/relatorios.php" class="button">Acessar</a>
+                <h2>Gerenciar Produtos</h2>
+                <p>Adicione, edite ou remova produtos do sistema.</p>
+                <a href="../views/gerenciar_produtos.php" class="button">Acessar</a>
             </div>
             <div class="action-card">
                 <h2>Configurações</h2>
