@@ -2,7 +2,9 @@
 session_start();
 include_once("../../database/conexao.php");
 
-$logado = isset($_SESSION['id']);
+$logado_cliente = isset($_SESSION['id_cliente']);
+$logado_funcionario = isset($_SESSION['id_funcionario']);
+$logado = $logado_cliente || $logado_funcionario;
 
 $produto_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
@@ -82,12 +84,17 @@ if (!$produto) {
         <h1 class="title"><?php echo htmlspecialchars(ucfirst($produto['categoria'])); ?> - Fatal Venom</h1>
 
         <div class="header-buttons">
-            <?php if ($logado): ?>
-                <a class="btn btn-outline-light" href="../../public/perfil.php">Perfil</a>
-            <?php else: ?>
-                <a class="btn btn-outline-light" href="../login.php">Login</a>
-            <?php endif; ?>
-            <a href="carrinho.php" class="btn btn-outline-light">Carrinho</a>
+            <?php 
+                if ($logado_funcionario) {
+                    echo '<a class="btn btn-outline-light" href="painel_funcionario.php">Perfil</a>';
+                    echo '<a href="carrinho.php" class="btn btn-outline-light">Carrinho</a>';
+                } elseif ($logado_cliente) {
+                    echo '<a class="btn btn-outline-light" href="perfil.php">Perfil</a>';
+                    echo '<a href="carrinho.php" class="btn btn-outline-light">Carrinho</a>';
+                } else {
+                    echo '<a class="btn btn-outline-light" href="login.php">Login</a>';
+                }
+            ?>
         </div>
     </div>
     

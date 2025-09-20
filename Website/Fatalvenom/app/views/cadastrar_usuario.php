@@ -1,27 +1,3 @@
-<?php
-$mensagem = '';
-if (isset($_GET['erro'])) {
-    $erro = $_GET['erro'];
-    switch ($erro) {
-        case 'campos_vazios':
-            $mensagem = 'Por favor, preencha todos os campos.';
-            break;
-        case 'senhas_nao_coincidem':
-            $mensagem = 'As senhas não coincidem.';
-            break;
-        case 'email_existe':
-            $mensagem = 'Este e-mail já está cadastrado.';
-            break;
-        case 'falha_cadastro':
-            $mensagem = 'Erro ao cadastrar. Tente novamente.';
-            break;
-        default:
-            $mensagem = 'Ocorreu um erro desconhecendo. Tente novamente.';
-            break;
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -36,8 +12,11 @@ if (isset($_GET['erro'])) {
         <div class="card-body">
             <h5 class="card-title">Cadastre-se</h5>
             
-            <?php if (!empty($mensagem)): ?>
-                <div class="alert alert-danger" role="alert">
+            <?php 
+
+            if (!empty($mensagem)): 
+            ?>
+                <div class="alert <?php echo ($mensagem === 'Cadastro realizado com sucesso!') ? 'alert-success' : 'alert-danger'; ?>" role="alert">
                     <?php echo $mensagem; ?>
                 </div>
             <?php endif; ?>
@@ -50,7 +29,7 @@ if (isset($_GET['erro'])) {
                 <div class="mb-3">
                     <label for="nickname" class="form-label">Nickname</label>
                     <input type="text" class="form-control" id="nickname" name="nickname" required>
-                </div>                
+                </div>              
                 <div class="mb-3">
                     <label for="email" class="form-label">Endereço de E-mail</label>
                     <input type="email" class="form-control" id="email" name="email" required>
@@ -58,7 +37,7 @@ if (isset($_GET['erro'])) {
                 <div class="mb-3">
                     <label for="telefone" class="form-label">Telefone</label>
                     <input type="text" class="form-control" id="telefone" name="telefone" required>
-                </div>                 
+                </div>              
                 <div class="mb-3">
                     <label for="senha" class="form-label">Senha</label>
                     <input type="password" class="form-control" id="senha" name="senha" required>
@@ -69,7 +48,7 @@ if (isset($_GET['erro'])) {
                 </div>
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
             </form>
-            <p class="mt-3 text-center">Já tem uma conta? <a href="login.php">Faça login aqui</a></p>
+            <p class="mt-3 text-center">Já tem uma conta? <a href="../views/login.php">Faça login aqui</a></p>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>

@@ -2,7 +2,10 @@
 session_start();
 include_once("../database/conexao.php");
 
-$logado = isset($_SESSION['id']);
+$id_cliente = isset($_SESSION['id_cliente']) ? $_SESSION['id_cliente'] : null;
+$id_funcionario = isset($_SESSION['id_funcionario']) ? $_SESSION['id_funcionario'] : null;
+
+$logado = ($id_cliente || $id_funcionario);
 ?>
 
 <!DOCTYPE html>
@@ -16,16 +19,13 @@ $logado = isset($_SESSION['id']);
 </head>
 <body>
     
-    <!--Navbar-->
-
-    <nav class="navbar navbar-expand-lg bg-body p-3">
+        <nav class="navbar navbar-expand-lg bg-body p-3">
 
         <div class="dropdown">
         <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="assets/imagens/button.png" width="50px" height="50px">
         </button>
-        <ul class="dropdown-menu"> <!--  Categoria das roupas aqui!!!  -->
-                <li><a class="dropdown-item" href="#">Home</a></li>
+        <ul class="dropdown-menu">                 <li><a class="dropdown-item" href="#">Home</a></li>
                 <li><a class="dropdown-item" href="#">Sobre</a></li>
                 <li><a class="dropdown-item" href="#">Carrinho</a></li>
         </ul>
@@ -36,18 +36,20 @@ $logado = isset($_SESSION['id']);
                 <img src="assets/imagens/logo.png" alt="Logo" width="120" height="120">
             </a>
             
-            <div class="collapse navbar-collapse" id="navbarNav"> <!--Precisa colocar os links-->
-                <ul class="navbar-nav ms-auto me-3">
+            <div class="collapse navbar-collapse" id="navbarNav">                 <ul class="navbar-nav ms-auto me-3">
 
                     <?php if ($logado): ?>
-                      <li class="nav-item me-3"><a class="nav-link active" href="perfil.php">Perfil</a></li>
+                        <?php if ($id_funcionario): ?>
+                            <li class="nav-item me-3"><a class="nav-link active" href="../app/views/painel_funcionario.php">Perfil</a></li>
+                        <?php else: ?>
+                            <li class="nav-item me-3"><a class="nav-link active" href="../app/views/perfil.php">Perfil</a></li>
+                        <?php endif; ?>
                     <?php else: ?>
-                      <li class="nav-item me-3"><a class="nav-link active" href="../app/views/login.php">Login</a></li>
+                        <li class="nav-item me-3"><a class="nav-link active" href="../app/views/login.php">Login</a></li>
                     <?php endif; ?>
-
                     
-                    <li class="nav-item me-3"><a class="nav-link" href="#">Sobre</a></li>
-                    <li class="nav-item me-3"><a class="nav-link" href="#">Carrinho</a></li>
+                    <li class="nav-item me-3"><a class="nav-link" href="#sobre">Sobre</a></li>
+                    <li class="nav-item me-3"><a class="nav-link" href="../app/views/carrinho.php">Carrinho</a></li>
                 </ul>
             </div>
 
@@ -55,11 +57,7 @@ $logado = isset($_SESSION['id']);
     </nav>
 
 
-<!--Conteúdo principal n1-->
-
-<div class="content1"> <!-- Colocar imagem do mesmo tamanho -->
-
-    <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+<div class="content1">     <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="assets/imagens/granulado.jpg" class="d-block w-100" alt="...">
@@ -83,14 +81,12 @@ $logado = isset($_SESSION['id']);
 
 </div>
 
-<!--Conteúdo principal n2-->
-
 <div class="content2">
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
             <div class="card">
-              <a href="shirts.php">
+              <a href="../app/views/shirts.php">
               <img src="assets/imagens/modelos1.png" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">Shirts</h5>
@@ -101,7 +97,7 @@ $logado = isset($_SESSION['id']);
         </div>
         <div class="col">
             <div class="card">
-              <a href="pants.php">
+              <a href="../app/views/pants.php">
               <img src="assets/imagens/modelos1.png" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">Pants</h5>
@@ -112,7 +108,7 @@ $logado = isset($_SESSION['id']);
         </div>
         <div class="col">
           <div class="card">
-            <a href="acessories.php">
+            <a href="../app/views/acessories.php">
             <img src="assets/imagens/modelos1.png" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Acessories</h5>
@@ -124,9 +120,7 @@ $logado = isset($_SESSION['id']);
       </div>
 </div>
 
-<!--Conteúdo principal n3-->
-
-<div class="content3">
+<div id="sobre" class="content3">
     <p class="titulo1">Sobre</p>
     <p class="texto1">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab pariatur perspiciatis nulla omnis, porro placeat explicabo sint consectetur excepturi assumenda accusantium, id cupiditate odio. Similique qui sed consequatur praesentium cumque.
@@ -134,8 +128,6 @@ $logado = isset($_SESSION['id']);
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima maiores officia vitae nostrum veritatis, perspiciatis quasi atque quas explicabo molestiae, sunt dolor, excepturi omnis ad quam aliquam provident aut cupiditate.
     </p>     
 </div>
-
-<!--Footer-->
 
 <div class="footer">
 

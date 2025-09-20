@@ -1,9 +1,12 @@
 <?php
 session_start();
-include_once("../database/conexao.php");
+include_once("../../database/conexao.php");
 
 $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'Calça';
-$logado = isset($_SESSION['id']);
+
+$logado_cliente = isset($_SESSION['id_cliente']);
+$logado_funcionario = isset($_SESSION['id_funcionario']);
+$logado = $logado_cliente || $logado_funcionario;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -19,13 +22,18 @@ $logado = isset($_SESSION['id']);
     <a class="navbar-brand fw-bold text-uppercase" href="#"><?php echo $categoria; ?> - Fatal Venom</a>
     <div class="ms-auto">
         <?php 
-        if ($logado) {
-            echo '<a class="btn btn-outline-light me-2" href="perfil.php">Perfil</a>';
+        if ($logado_funcionario) {
+            echo '<a class="btn btn-outline-light me-2" href="painel_funcionario.php">Perfil Funcionário</a>';
+        } elseif ($logado_cliente) {
+            echo '<a class="btn btn-outline-light me-2" href="perfil.php">Perfil Cliente</a>';
         } else {
-            echo '<a class="btn btn-outline-light me-2" href="../app/views/login.php">Login</a>';
+            echo '<a class="btn btn-outline-light me-2" href="login.php">Login</a>';
+        }
+        if ($logado) {
+            echo '<a href="carrinho.php" class="btn btn-warning">Carrinho</a>';
         }
         ?>
-        <a href="../app/views/carrinho.php" class="btn btn-warning">Carrinho</a>
+        <a href="../../public/index.php" class="btn btn-warning">Voltar</a>
     </div>
 </nav>
 
@@ -42,7 +50,7 @@ $logado = isset($_SESSION['id']);
         while ($produto = mysqli_fetch_assoc($result)) {
             echo '<div class="col-md-4">';
             echo '<div class="card shadow-sm h-100">';
-            echo '<a href="../app/views/produto_detalhes.php?id='.$produto['id'].'">';
+            echo '<a href="produto_detalhes.php?id='.$produto['id'].'">';
             echo '<img src="'.$produto['imagem'].'" class="card-img-top" alt="'.$produto['nome'].'" style="height:250px; object-fit:cover;">';
             echo '</a>';
             echo '<div class="card-body d-flex flex-column">';
@@ -50,7 +58,7 @@ $logado = isset($_SESSION['id']);
             echo '<h5 class="card-title">'.$produto['nome'].'</h5>';
             echo '</a>';
             echo '<p class="card-text fw-bold text-success mb-3">R$ '.$produto['preco'].'</p>';
-            echo '<form method="POST" action="../app/controllers/adicionar_carrinho.php" class="mt-auto">';
+            echo '<form method="POST" action="../controllers/adicionar_carrinho.php" class="mt-auto">';
             echo '<input type="hidden" name="id" value="'.$produto['id'].'">';
             echo '<input type="hidden" name="pagina" value="'.$_SERVER['REQUEST_URI'].'">';
             echo '<button type="submit" class="btn btn-dark w-100">Adicionar ao Carrinho</button>';
