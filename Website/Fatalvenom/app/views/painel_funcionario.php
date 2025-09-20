@@ -58,8 +58,7 @@ if (!isset($_SESSION['id_funcionario']) || ($_SESSION['cargo'] !== 'Administrado
                     <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <?php if ($_SESSION['cargo'] === 'Administrador' || $_SESSION['cargo'] === 'Gerente'): ?>
                             Acessar
-                        <?php endif; ?>
-                        <?php if ($_SESSION['cargo'] !== 'Administrador' || $_SESSION['cargo'] !== 'Gerente'): ?>
+                        <?php else: ?>
                             Acesso Negado
                         <?php endif; ?>
                     </a>       
