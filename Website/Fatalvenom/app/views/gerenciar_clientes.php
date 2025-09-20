@@ -83,8 +83,8 @@ $result = mysqli_query($conexao, $sql);
 <body class="bg-light">
 
 <div class="container my-5">
-    <h1 class="mb-4">Gerenciar Clientes</h1>
-
+    <h1 class="mb-4"><a href="painel_funcionario.php" class="btn btn-success w-100">Voltar</a></h1>
+    <h1 class="mb-4">Gerenciar Clientes<div class="col-md-1"></h1>
     <?php if (!empty($erro)): ?>
         <div class="alert alert-danger" role="alert">
             <?php echo $erro; ?>
@@ -92,7 +92,7 @@ $result = mysqli_query($conexao, $sql);
     <?php endif; ?>
 
     <div class="card mb-4 p-3">
-        <h5>Adicionar Cliente</h5>
+        <h5>Adicionar Cliente</h5> 
         <form method="POST">
             <input type="hidden" name="acao" value="adicionar">
             <div class="row g-2">

@@ -97,6 +97,7 @@ $avatar = !empty($user['avatar']) ? $user['avatar'] : "https://i.pravatar.cc/150
                 <div class="campo-label">Telefone: </div>
                 <div class="campo-valor"><?= htmlspecialchars($user['telefone']) ?></div>
             </div>
+            <a href="../../public/index.php" class="btn btn-dark mt-2">Voltar para tela inicial</a>
             <a href="../controllers/logout.php" class="btn btn-danger mt-2">Sair</a>
         </div>
     </div>

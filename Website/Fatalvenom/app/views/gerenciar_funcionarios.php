@@ -86,6 +86,7 @@ $result = mysqli_query($conexao, $sql);
 <body class="bg-light">
 
 <div class="container my-5">
+    <h1 class="mb-4"><a href="painel_funcionario.php" class="btn btn-success w-100">Voltar</a></h1>
     <h1 class="mb-4">Gerenciar Usuários</h1>
 
     <?php if (!empty($erro)): ?>
