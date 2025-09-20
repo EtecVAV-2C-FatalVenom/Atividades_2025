@@ -36,7 +36,7 @@ $logado = isset($_SESSION['id']);
                 <img src="assets/imagens/logo.png" alt="Logo" width="120" height="120">
             </a>
             
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNav"> <!--Precisa colocar os links-->
                 <ul class="navbar-nav ms-auto me-3">
 
                     <?php if ($logado): ?>

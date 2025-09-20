@@ -7,11 +7,10 @@ $logado = isset($_SESSION['id']);
 $produto_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 if ($produto_id <= 0) {
-    header("Location: Produtos.php"); // Melhor redirecionar para a página principal
+    header("Location: Produtos.php");
     exit();
 }
 
-// Adicione 'categoria' na sua consulta SQL
 $sql = "SELECT id, nome, preco, descricao, imagem, categoria FROM produto WHERE id = ?";
 $stmt = mysqli_prepare($conexao, $sql);
 mysqli_stmt_bind_param($stmt, "i", $produto_id);
@@ -33,7 +32,7 @@ if (!$produto) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
-        /* Seus estilos CSS, mova-os para um arquivo externo para melhor prática */
+
         body {
             background-color: #121212;
             color: #fff;
