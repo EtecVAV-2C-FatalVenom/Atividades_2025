@@ -55,12 +55,19 @@ if (!isset($_SESSION['id_funcionario']) || ($_SESSION['cargo'] !== 'Administrado
                 <div class="dropdown">
                     <h2>Gerenciar Usuários</h2>
                     <p>Gerencie os usuários do sistema.</p>
-                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Acessar</a>       
+                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <?php if ($_SESSION['cargo'] === 'Administrador' || $_SESSION['cargo'] === 'Gerente'): ?>
+                            Acessar
+                        <?php else: ?>
+                            Acesso Negado
+                        <?php endif; ?>
+                    </a>       
                     <ul class="dropdown-menu">
                         <?php if ($_SESSION['cargo'] === 'Administrador' || $_SESSION['cargo'] === 'Gerente'): ?>
                         <li><a class="dropdown-item" href="gerenciar_funcionarios.php">Gerenciar Funcionários</a></li>
                         <li><a class="dropdown-item" href="gerenciar_clientes.php">Gerenciar Clientes</a></li>
                         <?php endif; ?>
+                        
                     </ul>
                 </div>
             </div>
