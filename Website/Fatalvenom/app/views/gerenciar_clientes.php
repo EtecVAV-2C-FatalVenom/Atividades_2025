@@ -79,11 +79,28 @@ $result = mysqli_query($conexao, $sql);
     <title>Gerenciar Clientes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../../public/assets/style.css">
 </head>
+<style>
+     .logo-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-section img {
+            width: 400px;
+            height: 80px;
+            object-fit: contain;
+        }
+</style>
 <body class="bg-light">
 
+<div class="logo-section">
+    <img src="../../public/assets/imagens/logo.png" alt="Logo da Loja">
+</div>
+
 <div class="container my-5">
-    <h1 class="mb-4"><a href="painel_funcionario.php" class="btn btn-success w-100">Voltar</a></h1>
+    <h1 class="mb-4"><a href="painel_funcionario.php" class="btn btn-dark w-100">Voltar</a></h1>
     <h1 class="mb-4">Gerenciar Clientes<div class="col-md-1"></h1>
     <?php if (!empty($erro)): ?>
         <div class="alert alert-danger" role="alert">
@@ -91,7 +108,7 @@ $result = mysqli_query($conexao, $sql);
         </div>
     <?php endif; ?>
 
-    <div class="card mb-4 p-3">
+    <div class="card mb-4 p-3" style="height:150px;">
         <h5>Adicionar Cliente</h5> 
         <form method="POST">
             <input type="hidden" name="acao" value="adicionar">
@@ -100,7 +117,7 @@ $result = mysqli_query($conexao, $sql);
                 <div class="col-md-3"><input type="email" name="email" placeholder="Email" class="form-control" required></div>
                 <div class="col-md-3"><input type="text" name="nickname" placeholder="Nickname" class="form-control" required></div>
                 <div class="col-md-2"><input type="password" name="senha" placeholder="Senha" class="form-control" required></div>
-                <div class="col-md-1"><button type="submit" class="btn btn-success w-100">Adicionar</button></div>
+                <div class="col-md-1"><button type="submit" class="btn btn-secondary w-101">Adicionar</button></div>
             </div>
         </form>
     </div>

@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif ($senha !== $confirma_senha) {
         $mensagem = 'As senhas não coincidem.';
     } else {
-        $sql_verifica = "SELECT id FROM cliente WHERE email = ?";
+        $sql_verifica = "SELECT id_cliente FROM cliente WHERE email = ?";
         $stmt_verifica = mysqli_prepare($conexao, $sql_verifica);
         mysqli_stmt_bind_param($stmt_verifica, 's', $email);
         mysqli_stmt_execute($stmt_verifica);

@@ -5,10 +5,21 @@
     padding: 0;
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
+
+html, body {
+    min-height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+	font-family: 'Poppins', sans-serif;
     text-decoration: none;
 }
+
+
+.main-content {
+    flex: 1;
+}
+
 
 link{
 	text-decoration: none !important;
@@ -29,7 +40,6 @@ link{
     margin-bottom: 100px;   
 }
 
-/* Conteúdo da loja n2 */
 .content2 {
     margin-bottom: 1000px;
     margin: auto;
@@ -75,13 +85,14 @@ link{
 	text-decoration: none;
     font-family: 'Poppins', sans-serif;
     font-weight: normal;
-	font-size: 20px;
+	font-size: 15px;
 }
 
 .row{
 	text-decoration: none;
     font-family: 'Poppins', sans-serif;
 	font-size: 20px;
+	padding-bottom: 1000px;
 }
 
 .card-body {
@@ -95,6 +106,77 @@ link{
     display: block;                    
 }
 
+.site-footer {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 15px 10px;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    position: relative;  
+    bottom: 0;        
+    left: 0;
+}
 
+.footer-main {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
 
+.footer-sub {
+    font-size: 14px;
+    margin: 5px 0 0 0;
+}
+
+.extra-content {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 15px;
+    margin-top: 250px;
+}
+
+.extra-title {
+    font-size: 150px;
+    font-weight: normal;
+    color: #0e1013;
+    display: block; 
+}
+
+.extra-text {
+    font-size: 30px;
+    color: #444;
+    line-height: 1.6;
+	text-align: justify;
+}
+
+.extra-large-img img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.extra-small-images {
+    gap: 30px;
+}
+
+.extra-small-images img.small-img {
+    width: 50%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .extra-small-images img.small-img {
+        width: 100%;
+    }
+    .extra-title {
+        font-size: 24px !important;
+    }
+}
 

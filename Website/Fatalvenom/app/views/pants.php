@@ -2,6 +2,9 @@
 session_start();
 include_once("../../database/conexao.php");
 
+$id_cliente = isset($_SESSION['id_cliente']) ? $_SESSION['id_cliente'] : null;
+$id_funcionario = isset($_SESSION['id_funcionario']) ? $_SESSION['id_funcionario'] : null;
+
 $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'Calça';
 
 $logado_cliente = isset($_SESSION['id_cliente']);

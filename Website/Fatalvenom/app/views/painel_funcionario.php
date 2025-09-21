@@ -14,7 +14,7 @@ if (!isset($_SESSION['id_funcionario']) || ($_SESSION['cargo'] !== 'Administrado
     <meta charset="UTF-8">
     <title>Painel do Funcionário</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="../../public/assets/style.css">
     <style>
         body { font-family: Arial, sans-serif; background: #f4f4f4; }
         .container { max-width: 900px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 8px; }
@@ -35,18 +35,33 @@ if (!isset($_SESSION['id_funcionario']) || ($_SESSION['cargo'] !== 'Administrado
             display: inline-block;
             margin-top: 12px;
             padding: 8px 18px;
-            background: #007bff;
+            background: #17181aff;
             color: #fff;
             border-radius: 4px;
             text-decoration: none;
         }
-        a.button:hover { background: #0056b3; }
+        a.button:hover { background: #020202ff; }
         .logout { float: right; }
+
+         .logo-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-section img {
+            width: 400pxpx;
+            height: 80px;
+            object-fit: contain;
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="../controllers/logout.php" class="button logout">Sair</a>
+        <div class="logo-section">
+                    <img src="../../public/assets/imagens/logo.png" alt="Logo da Loja">
+                </div>
+        <a href="../controllers/logout.php" class="button logout btn btn-dark">Sair</a>
         <h1>Painel do Funcionário</h1>
         <p>Bem-vindo, <?php echo htmlspecialchars($_SESSION['nome']); ?>!</p>
         <div class="actions">
@@ -55,7 +70,7 @@ if (!isset($_SESSION['id_funcionario']) || ($_SESSION['cargo'] !== 'Administrado
                 <div class="dropdown">
                     <h2>Gerenciar Usuários</h2>
                     <p>Gerencie os usuários do sistema.</p>
-                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <?php if ($_SESSION['cargo'] === 'Administrador' || $_SESSION['cargo'] === 'Gerente'): ?>
                             Acessar
                         <?php else: ?>
@@ -76,14 +91,14 @@ if (!isset($_SESSION['id_funcionario']) || ($_SESSION['cargo'] !== 'Administrado
             <div class="action-card">
                 <h2>Gerenciar Produtos</h2>
                 <p>Adicione, edite ou remova produtos do sistema.</p>
-                <a href="../views/gerenciar_produtos.php" class="button">Acessar</a>
+                <a href="../views/gerenciar_produtos.php" class="btn btn-secondary">Acessar</a>
             </div>
             
             <div class="action-card">
                 <h2>Configurações</h2>
                 <p>Altere configurações do seu usuário.</p>
                 <div class="dropdown">
-                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Configurações</a>        
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Configurações</a>        
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="altera_nickname.php">Alterar Nome</a></li>
                         <li><a class="dropdown-item" href="altera_senha.php">Alterar Senha</a></li>

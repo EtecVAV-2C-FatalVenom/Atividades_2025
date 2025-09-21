@@ -9,7 +9,7 @@
 </head>
 <body class="bg-light d-flex justify-content-center align-items-center" style="min-height: 100vh;">
 
-    <div class="card shadow p-4 rounded" style="width: 100%; max-width: 400px;">
+    <div class="card shadow p-4 rounded" style="width: 100%; max-width: 600px;">
         <div class="card-body">
             <h5 class="card-title text-center mb-4">Cadastre-se</h5>
             
@@ -48,7 +48,7 @@
                 </div>
                 <button type="submit" class="btn btn-dark w-100">Cadastrar</button>
             </form>
-            <p class="mt-3 text-center" style="text-decoration:underline;">Já tem uma conta? <a href="../views/login.php">Faça login</a></p>
+            <p class="mt-3 text-center" style="text-decoration:underline;">Já tem uma conta? <a href="../views/login.php">Faça login aqui</a></p>
         </div>
     </div>
 

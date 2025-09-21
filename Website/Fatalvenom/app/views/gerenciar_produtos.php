@@ -82,31 +82,52 @@ $result = mysqli_query($conexao, $sql);
     <title>Gerenciar Produtos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../../public/assets/style.css">
+    <style>
+         .logo-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-section img {
+            width: 400px;
+            height: 80px;
+            object-fit: contain;
+        }
+    </style>
 </head>
 <body class="bg-light">
 
 <div class="container my-5">
-    <h1 class="mb-4"><a href="painel_funcionario.php" class="btn btn-success w-100">Voltar</a></h1>
+    <div class="logo-section">
+                    <img src="../../public/assets/imagens/logo.png" alt="Logo da Loja">
+                </div>
+    <h1 class="mb-4"><a href="painel_funcionario.php" class="btn btn-dark w-100">Voltar</a></h1>
     <h1 class="mb-4">Gerenciar Produtos</h1>
 
-    <div class="card mb-4 p-3">
+    <div class="card mb-3 p-3" style="height:250px;">
         <h5>Adicionar Produto</h5>
-        <form method="POST">
-            <input type="hidden" name="acao" value="adicionar">
-            <div class="row g-2 mb-2">
-                <div class="col-md-3"><input type="text" name="nome" placeholder="Nome" class="form-control" required></div>
-                <div class="col-md-2"><input type="text" name="preco" placeholder="Preço" class="form-control" required></div>
-                <div class="col-md-3"><input type="text" name="categoria" placeholder="Categoria" class="form-control" required></div>
-                <div class="col-md-2"><input type="number" name="estoque" placeholder="Estoque" class="form-control" required></div>
-                <div class="col-md-2"><input type="text" name="imagem" placeholder="URL Imagem" class="form-control" required></div>
-            </div>
-            <div class="row g-2 mb-2">
-                <div class="col-md-12"><textarea name="descricao" placeholder="Descrição" class="form-control" rows="2" required></textarea></div>
-            </div>
-            <div class="row g-2">
-                <div class="col-md-2"><button type="submit" class="btn btn-success w-100">Adicionar</button></div>
-            </div>
-        </form>
+    
+    <form method="POST">
+    <input type="hidden" name="acao" value="adicionar">
+    <div class="row g-2 align-items-center">
+        <div class="col-md-3"><input type="text" name="nome" placeholder="Nome" class="form-control" required></div>
+        <div class="col-md-2"><input type="text" name="preco" placeholder="Preço" class="form-control" required></div>
+        <div class="col-md-3"><input type="text" name="categoria" placeholder="Categoria" class="form-control" required></div>
+        <div class="col-md-2"><input type="number" name="estoque" placeholder="Estoque" class="form-control" required></div>
+        <div class="col-md-2"><input type="text" name="imagem" placeholder="URL Imagem" class="form-control" required></div>
+        <div class="col-md-12 mt-2"><textarea name="descricao" placeholder="Descrição" class="form-control" rows="2" required></textarea></div>
+        <div class="col-auto mt-2">
+            <button type="submit" class="btn btn-secondary">Adicionar</button>
+        </div>
+        <div class="col-auto mt-2">
+            <button type="reset" class="btn btn-outline-secondary">Limpar</button>
+        </div>
+    </div>
+</form>
+
+
+
     </div>
 
     <table class="table table-striped bg-white shadow-sm">
