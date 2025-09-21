@@ -5,14 +5,18 @@
 
 /*Navbar*/
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
 .navbar{
-	font-family: 'Times New Roman', Times, serif;
+	font-family: 'Poppins', sans-serif;
+	font-weight: bold;
+	background-color: #d0dce4;
 }
 
-/*Conteúdo da loja n1*/
-
-.content1 {
-	display: flex;
+/*banners*/
+.carrossel {
+	width: 100%;
+	display: fixed;
 	justify-content: center;
 	align-items: center;     
 	margin-bottom: 100px;   
@@ -50,11 +54,24 @@
 	font-family: 'Times New Roman', Times, serif;
 }
 
+.card {
+	text-decoration: none;
+}
+
+.h5 {
+	text-decoration: none;
+	font-family: 'Poppins', sans-serif;
+	font-weight: bold;
+}
+
+.card-body{
+	background-color: #d0dce4;
+	text-align: center;
+}
+
 /*Footer*/
 
-.footer{
 
-}
 
 /* login */
 

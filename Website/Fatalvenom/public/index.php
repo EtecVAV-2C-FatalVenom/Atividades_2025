@@ -23,9 +23,10 @@ $logado = ($id_cliente || $id_funcionario);
 
         <div class="dropdown">
         <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="assets/imagens/button.png" width="50px" height="50px">
+            <img src="assets/imagens/button.png" width="40px" height="40px">
         </button>
-        <ul class="dropdown-menu">                 <li><a class="dropdown-item" href="#">Home</a></li>
+        <ul class="dropdown-menu">                 
+                <li><a class="dropdown-item" href="#">Home</a></li>
                 <li><a class="dropdown-item" href="#">Sobre</a></li>
                 <li><a class="dropdown-item" href="#">Carrinho</a></li>
         </ul>
@@ -33,7 +34,7 @@ $logado = ($id_cliente || $id_funcionario);
 
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="assets/imagens/logo.png" alt="Logo" width="120" height="120">
+                <img src="assets/imagens/logo.png" alt="Logo" width="428" height="142">
             </a>
             
             <div class="collapse navbar-collapse" id="navbarNav">                 <ul class="navbar-nav ms-auto me-3">
@@ -57,16 +58,23 @@ $logado = ($id_cliente || $id_funcionario);
     </nav>
 
 
-<div class="content1">     <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+<div class="carrossel">     
+    <div id="carouselExampleRide" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="assets/imagens/granulado.jpg" class="d-block w-100" alt="...">
+            <img src="assets/imagens/mural.png" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="assets/imagens/granulado.jpg" class="d-block w-100" alt="...">
+            <img src="assets/imagens/aespa.png" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="assets/imagens/granulado.jpg" class="d-block w-100" alt="...">
+            <img src="assets/imagens/galaxg.png" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/imagens/masc.png" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/imagens/mugler.png" class="d-block w-100" alt="...">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
@@ -77,7 +85,7 @@ $logado = ($id_cliente || $id_funcionario);
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
-      </div>
+    </div>
 
 </div>
 
@@ -87,10 +95,10 @@ $logado = ($id_cliente || $id_funcionario);
         <div class="col">
             <div class="card">
               <a href="../app/views/shirts.php">
-              <img src="assets/imagens/modelos1.png" class="card-img-top" alt="...">
+              <img src="assets/imagens/tops.jpg" class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title">Shirts</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                <h5 class="card-title">Partes de cima</h5>
+                <p class="card-text">Jaquetas, blusas, croppeds, tudo para te manter no estilo.</p>
               </a>
               </div>
             </div>
@@ -98,9 +106,9 @@ $logado = ($id_cliente || $id_funcionario);
         <div class="col">
             <div class="card">
               <a href="../app/views/pants.php">
-              <img src="assets/imagens/modelos1.png" class="card-img-top" alt="...">
+              <img src="assets/imagens/calcas.jpg" class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title">Pants</h5>
+                <h5 class="card-title">Partes de baixo</h5>
                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
               </a>
               </div>
@@ -109,9 +117,9 @@ $logado = ($id_cliente || $id_funcionario);
         <div class="col">
           <div class="card">
             <a href="../app/views/acessories.php">
-            <img src="assets/imagens/modelos1.png" class="card-img-top" alt="...">
+            <img src="assets/imagens/acessorios.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Acessories</h5>
+              <h5 class="card-title">Acessórios</h5>
               <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
             </a>
             </div>
