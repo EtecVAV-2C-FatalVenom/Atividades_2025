@@ -74,8 +74,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <title>Alterar Senha</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../public/assets/style.css">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .card-senha {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            background-color: #fff;
+        }
+
+        .card-senha h3 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .card-senha .btn-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .alert {
+            margin-top: 15px;
+        }
+    </style>
 </head>
-<body class="p-4">
+<body>
+
+<div class="card-senha">
     <h3>Alterar Senha</h3>
 
     <?php if ($erro): ?>
@@ -98,8 +130,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="confirma_senha" class="form-label">Confirme a Nova Senha:</label>
             <input type="password" name="confirma_senha" id="confirma_senha" class="form-control" required>
         </div>
-        <button type="submit" class="btn btn-primary">Alterar Senha</button>
-        <a href="<?= $redirect_url ?>" class="btn btn-secondary">Voltar</a>
+
+        <div class="btn-group mt-3">
+            <button type="submit" class="btn btn-dark">Alterar Senha</button>
+            <a href="<?= $redirect_url ?>" class="btn btn-secondary">Voltar</a>
+        </div>
     </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

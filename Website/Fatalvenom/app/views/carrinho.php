@@ -66,6 +66,7 @@ if (count($produtos) > 0) {
 
 echo "<h2>Total: R$ ".$total."</h2>";
 ?>
+<a href="../../public/index.php" class="btn btn-dark mt-2">Voltar para tela inicial</a>
 <a href="?acao=cancelar">Limpar Carrinho</a>
 <a href="#">Comprar</a>
 </body>

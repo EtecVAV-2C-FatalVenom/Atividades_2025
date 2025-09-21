@@ -74,25 +74,43 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        .logo-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-section img {
+            width: 400pxpx;
+            height: 80px;
+            object-fit: contain;
+        }
+    </style>    
+    <link rel="stylesheet" href="../../public/assets/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <title>Login</title>
 </head>
-<body>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Login</h5>
-            <form action="login.php" method="post">
-                <input type="email" name="email" id="email" placeholder="Email">
-                <input type="password" name="senha" id="senha"placeholder="Senha">
-                <input value="Entrar" type="submit" name="entrar" id="entrar" class="btn btn-primary">
+<body class="bg-light d-flex justify-content-center align-items-center vh-100">
+
+    <div class="card p-4 shadow-sm" style="width: 100%; max-width: 700px;">
+            <div class="card-body">
+                <div class="logo-section">
+                    <img src="../../public/assets/imagens/logo.png" alt="Logo da Loja">
+                </div>
+
+            <h5 class="card-title text-center mb-4">Login</h5>
+            <form action="login.php" method="post" class="d-flex flex-column gap-3">
+                <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+                <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha">
+                <input value="Entrar" type="submit" name="entrar" id="entrar" class="btn btn-dark">
                 <?php if (!empty($mensagem)) : ?>
-                    <span><?php echo $mensagem; ?></span>
+                    <div class="text-danger text-center"><?php echo $mensagem; ?></div>
                 <?php endif; ?>
-                <a href="cadastrar_usuario.php" class="btn btn-primary">Cadastrar</a>
+                <a href="cadastrar_usuario.php" class="btn btn-secondary mt-2 text-white">Cadastrar</a>
             </form>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

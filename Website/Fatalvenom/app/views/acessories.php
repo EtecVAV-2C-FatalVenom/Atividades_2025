@@ -2,11 +2,14 @@
 session_start();
 include_once("../../database/conexao.php");
 
-$categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'Acessorios';
+$id_cliente = isset($_SESSION['id_cliente']) ? $_SESSION['id_cliente'] : null;
+$id_funcionario = isset($_SESSION['id_funcionario']) ? $_SESSION['id_funcionario'] : null;
 
 $logado_cliente = isset($_SESSION['id_cliente']);
 $logado_funcionario = isset($_SESSION['id_funcionario']);
 $logado = $logado_cliente || $logado_funcionario;
+
+$categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'Acessorios';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,25 +17,48 @@ $logado = $logado_cliente || $logado_funcionario;
     <meta charset="utf-8">
     <title><?php echo $categoria; ?> - Fatal Venom</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../public/assets/style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="bg-light">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
-    <a class="navbar-brand fw-bold text-uppercase" href="#"><?php echo $categoria; ?> - Fatal Venom</a>
-    <div class="ms-auto">
-        <?php 
-        if ($logado_funcionario) {
-            echo '<a class="btn btn-outline-light me-2" href="painel_funcionario.php">Perfil Funcionário</a>';
-            echo '<a href="carrinho.php" class="btn btn-warning">Carrinho</a>';
-        } elseif ($logado_cliente) {
-            echo '<a class="btn btn-outline-light me-2" href="perfil.php">Perfil Cliente</a>';
-            echo '<a href="carrinho.php" class="btn btn-warning">Carrinho</a>';
-        } else {
-            echo '<a class="btn btn-outline-light me-2" href="login.php">Login</a>';
-        }
-        ?>
-        <a href="../../public/index.php" class="btn btn-warning">Voltar</a>
+<nav class="navbar navbar-expand-lg bg-body p-3">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="../../public/assets/imagens/logo.png" alt="Logo" width="500" height="100">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto me-3">
+                <?php if ($logado): ?>
+                    <?php if ($id_funcionario): ?>
+                        <li class="nav-item me-3">
+                            <a class="nav-link active" href="painel_funcionario.php">Perfil</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item me-3">
+                            <a class="nav-link active" href="perfil.php">Perfil</a>
+                        </li>
+                    <?php endif; ?>
+                <?php else: ?>
+                    <li class="nav-item me-3">
+                        <a class="nav-link active" href="login.php">Login</a>
+                    </li>
+                <?php endif; ?>
+
+                <li class="nav-item me-3">
+                    <a class="nav-link" href="../../public/index.php">Home</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link" href="carrinho.php">Carrinho</a>
+                </li>
+            </ul>
+        </div>
+
     </div>
 </nav>
 
@@ -48,12 +74,12 @@ $logado = $logado_cliente || $logado_funcionario;
     if ($result && mysqli_num_rows($result) > 0) {
         while ($produto = mysqli_fetch_assoc($result)) {
             echo '<div class="col-md-4">';
-            echo '<div class="card shadow-sm h-100">';
+            echo '<div class="card bg-white h-100">';
             echo '<a href="produto_detalhes.php?id='.$produto['id'].'">';
             echo '<img src="'.$produto['imagem'].'" class="card-img-top" alt="'.$produto['nome'].'" style="height:250px; object-fit:cover;">';
             echo '</a>';
             echo '<div class="card-body d-flex flex-column">';
-            echo '<a href="../app/views/produto_detalhes.php?id='.$produto['id'].'" class="text-decoration-none text-dark">';
+            echo '<a href="produto_detalhes.php?id='.$produto['id'].'" class="text-decoration-none text-dark">';
             echo '<h5 class="card-title">'.$produto['nome'].'</h5>';
             echo '</a>';
             echo '<p class="card-text fw-bold text-success mb-3">R$ '.$produto['preco'].'</p>';

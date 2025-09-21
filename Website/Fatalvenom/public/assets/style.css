@@ -1,32 +1,37 @@
-*{
-	margin: 0;
-	padding: 0;
-}
-
-/*Navbar*/
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-.navbar{
-	font-family: 'Poppins', sans-serif;
-	font-weight: bold;
-	background-color: #d0dce4;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-/*banners*/
+body {
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+}
+
+link{
+	text-decoration: none !important;
+    color: inherit !important;
+}
+
+/* Navbar */
+.navbar {
+    font-weight: bold;
+}
+
+/* Banners */
 .carrossel {
-	width: 100%;
-	display: fixed;
-	justify-content: center;
-	align-items: center;     
-	margin-bottom: 100px;   
-  }
+    width: 100%;
+    display: fixed;
+    justify-content: center;
+    align-items: center;     
+    margin-bottom: 100px;   
+}
 
-/*Conteúdo da loja n2*/
-
-.content2{
-	margin-bottom: 30px;
-    width: 60%;
+/* Conteúdo da loja n2 */
+.content2 {
+    margin-bottom: 1000px;
     margin: auto;
     display: block;
     background-image: url("");
@@ -36,42 +41,60 @@
     background-size: cover;
 }
 
-/*Conteúdo da loja n3*/
 
-.content3{
-	text-align: center;
-	justify-content: center;
+.content3 {
+	padding-top: 50px;  
+    text-align: center;
+    justify-content: center;
 }
 
-.titulo1{
-	font-size: 38px;
-	font-style: bold;
-	font-family: 'Times New Roman', Times, serif;
+.titulo1 {
+    font-size: 38px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold; 
 }
 
-.texto1{
-	font-size: 18px;
-	font-family: 'Times New Roman', Times, serif;
+.texto1 {
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
 }
 
-.card {
+.card a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+.card-title {
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+	font-size: 30px;
+}
+
+.card-body {
 	text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: normal;
+	font-size: 20px;
 }
 
-.h5 {
+.row{
 	text-decoration: none;
-	font-family: 'Poppins', sans-serif;
-	font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+	font-size: 20px;
 }
 
-.card-body{
-	background-color: #d0dce4;
-	text-align: center;
+.card-body {
+    text-align: center;
 }
 
-/*Footer*/
+
+.card-link {
+    text-decoration: none !important; 
+    color: inherit !important;        
+    display: block;                    
+}
 
 
 
-/* login */
 

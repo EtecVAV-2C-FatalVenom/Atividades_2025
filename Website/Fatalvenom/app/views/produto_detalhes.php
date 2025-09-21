@@ -33,6 +33,7 @@ if (!$produto) {
     <link rel="stylesheet" href="Produtos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../../public/assets/style.css">
     <style>
 
         body {
@@ -65,11 +66,6 @@ if (!$produto) {
         .product-info h1 {
             color: #e0e0e0;
         }
-        .product-info .price {
-            font-size: 2em;
-            color: #00ff00;
-            margin: 20px 0;
-        }
         .product-info .description {
             color: #b0b0b0;
             line-height: 1.6;
@@ -80,23 +76,45 @@ if (!$produto) {
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1 class="title"><?php echo htmlspecialchars(ucfirst($produto['categoria'])); ?> - Fatal Venom</h1>
+    <nav class="navbar navbar-expand-lg bg-body p-3">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="../../public/assets/imagens/logo.png" alt="Logo" width="500" height="100">
+        </a>
 
-        <div class="header-buttons">
-            <?php 
-                if ($logado_funcionario) {
-                    echo '<a class="btn btn-outline-light" href="painel_funcionario.php">Perfil</a>';
-                    echo '<a href="carrinho.php" class="btn btn-outline-light">Carrinho</a>';
-                } elseif ($logado_cliente) {
-                    echo '<a class="btn btn-outline-light" href="perfil.php">Perfil</a>';
-                    echo '<a href="carrinho.php" class="btn btn-outline-light">Carrinho</a>';
-                } else {
-                    echo '<a class="btn btn-outline-light" href="login.php">Login</a>';
-                }
-            ?>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto me-3">
+                <?php if ($logado): ?>
+                    <?php if ($id_funcionario): ?>
+                        <li class="nav-item me-3">
+                            <a class="nav-link active" href="painel_funcionario.php">Perfil</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item me-3">
+                            <a class="nav-link active" href="perfil.php">Perfil</a>
+                        </li>
+                    <?php endif; ?>
+                <?php else: ?>
+                    <li class="nav-item me-3">
+                        <a class="nav-link active" href="login.php">Login</a>
+                    </li>
+                <?php endif; ?>
+
+                <li class="nav-item me-3">
+                    <a class="nav-link" href="../../public/index.php">Home</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link" href="carrinho.php">Carrinho</a>
+                </li>
+            </ul>
         </div>
+
     </div>
+</nav>
     
     <div class="container">
         <div class="product-details">
@@ -105,7 +123,9 @@ if (!$produto) {
             </div>
             <div class="product-info">
                 <h1><?php echo htmlspecialchars($produto['nome']); ?></h1>
-                <p class="price">R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?></p>
+                <p class="card-text fw-bold text-success mb-3" style="font-size:30px;">
+                    R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?>
+                </p>
                 <p class="description"><?php echo htmlspecialchars($produto['descricao']); ?></p>
 
                 <div class="add-to-cart-form">

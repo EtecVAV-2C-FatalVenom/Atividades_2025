@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Cliente</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../public/assets/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <div class="card" style="width: 25rem;">
+<body class="bg-light d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+
+    <div class="card shadow p-4 rounded" style="width: 100%; max-width: 400px;">
         <div class="card-body">
-            <h5 class="card-title">Cadastre-se</h5>
+            <h5 class="card-title text-center mb-4">Cadastre-se</h5>
             
             <?php 
-
             if (!empty($mensagem)): 
             ?>
                 <div class="alert <?php echo ($mensagem === 'Cadastro realizado com sucesso!') ? 'alert-success' : 'alert-danger'; ?>" role="alert">
@@ -46,11 +46,12 @@
                     <label for="confirma_senha" class="form-label">Confirme a Senha</label>
                     <input type="password" class="form-control" id="confirma_senha" name="confirma_senha" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                <button type="submit" class="btn btn-dark w-100">Cadastrar</button>
             </form>
-            <p class="mt-3 text-center">Já tem uma conta? <a href="../views/login.php">Faça login aqui</a></p>
+            <p class="mt-3 text-center" style="text-decoration:underline;">Já tem uma conta? <a href="../views/login.php">Faça login</a></p>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
