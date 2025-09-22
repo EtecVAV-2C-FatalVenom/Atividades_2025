@@ -2,7 +2,7 @@
 session_start();
 include_once("../../database/conexao.php");
 
-$mensagem = ''; 
+$mensagem = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST['nome'] ?? '';
@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (empty($nome) || empty($nickname) || empty($email) || empty($telefone) || empty($senha) || empty($confirma_senha)) {
         $mensagem = 'Por favor, preencha todos os campos.';
-    } elseif (strlen($senha) < 6) { 
+    } elseif (strlen($senha) < 6) {
         $mensagem = 'A senha deve ter pelo menos 6 caracteres.';
     } elseif ($senha !== $confirma_senha) {
         $mensagem = 'As senhas não coincidem.';

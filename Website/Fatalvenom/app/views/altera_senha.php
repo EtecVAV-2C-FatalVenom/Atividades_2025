@@ -12,9 +12,7 @@ $userId = $is_funcionario ? $_SESSION['id_funcionario'] : $_SESSION['id_cliente'
 $table = $is_funcionario ? "funcionarios" : "cliente";
 $field = "senha";
 
-
 $id_column = $is_funcionario ? "id_funcionario" : "id_cliente";
-
 $redirect_url = $is_funcionario ? "painel_funcionario.php" : "perfil.php";
 
 $erro = '';
@@ -32,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $sql = "SELECT $field FROM $table WHERE $id_column = ?";
         $stmt = $conexao->prepare($sql);
-        
+
         if ($stmt === false) {
             $erro = "Erro ao preparar a consulta: " . $conexao->error;
         } else {
@@ -43,15 +41,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($user && password_verify($senhaAtual, $user[$field])) {
                 $novaSenhaHash = password_hash($novaSenha, PASSWORD_DEFAULT);
-                
+
                 $sqlUpdate = "UPDATE $table SET $field = ? WHERE $id_column = ?";
                 $stmtUpdate = $conexao->prepare($sqlUpdate);
-                
+
                 if ($stmtUpdate === false) {
                     $erro = "Erro ao preparar a atualização: " . $conexao->error;
                 } else {
                     $stmtUpdate->bind_param("si", $novaSenhaHash, $userId);
-                    
+
                     if ($stmtUpdate->execute()) {
                         $sucesso = "Senha alterada com sucesso!";
                     } else {

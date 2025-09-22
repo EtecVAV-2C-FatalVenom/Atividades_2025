@@ -4,7 +4,7 @@ include_once("../../database/conexao.php");
 
 $mensagem = '';
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = isset($_POST["email"]) ? $_POST["email"] : '';
     $senha = isset($_POST["senha"]) ? $_POST["senha"] : '';
 
@@ -28,7 +28,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $_SESSION['email'] = $linha_func['email'];
                     $_SESSION['nome'] = $linha_func['nome'];
                     $_SESSION['cargo'] = $linha_func['cargo'];
-                    
+
                     $usuario_autenticado = true;
                     header('Location: painel_funcionario.php');
                     exit();
@@ -40,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if (!$usuario_autenticado) {
             $sql_cli = "SELECT id_cliente, email, senha, nome FROM cliente WHERE email = ?";
             $stmt_cli = mysqli_prepare($conexao, $sql_cli);
-            
+
             if ($stmt_cli) {
                 mysqli_stmt_bind_param($stmt_cli, 's', $email);
                 mysqli_stmt_execute($stmt_cli);
@@ -51,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $_SESSION['id_cliente'] = $linha_cli['id_cliente'];
                         $_SESSION['email'] = $linha_cli['email'];
                         $_SESSION['nome'] = $linha_cli['nome'];
-                        
+
                         $usuario_autenticado = true;
                         header('Location: ../../public/index.php');
                         exit();
@@ -60,7 +60,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 mysqli_stmt_close($stmt_cli);
             }
         }
-        
+
         if (!$usuario_autenticado) {
             session_unset();
             session_destroy();
@@ -69,6 +69,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -85,7 +86,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             height: 80px;
             object-fit: contain;
         }
-    </style>    
+    </style>
     <link rel="stylesheet" href="../../public/assets/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <title>Login</title>
@@ -93,10 +94,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body class="bg-light d-flex justify-content-center align-items-center vh-100">
 
     <div class="card p-4 shadow-sm" style="width: 100%; max-width: 700px;">
-            <div class="card-body">
-                <div class="logo-section">
-                    <img src="../../public/assets/imagens/logo.png" alt="Logo da Loja">
-                </div>
+        <div class="card-body">
+            <div class="logo-section">
+                <img src="../../public/assets/imagens/logo.png" alt="Logo da Loja">
+            </div>
 
             <h5 class="card-title text-center mb-4">Login</h5>
             <form action="login.php" method="post" class="d-flex flex-column gap-3">
@@ -114,3 +115,4 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+

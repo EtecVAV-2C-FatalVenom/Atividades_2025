@@ -64,39 +64,39 @@ $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'Acessorios';
 
 <div class="container my-5">
     <div class="row g-4">
-    <?php
-    $sql = "SELECT id, nome, preco, imagem FROM produto WHERE categoria = ?";
-    $stmt = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param($stmt, "s", $categoria);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
+        <?php
+        $sql = "SELECT id, nome, preco, imagem FROM produto WHERE categoria = ?";
+        $stmt = mysqli_prepare($conexao, $sql);
+        mysqli_stmt_bind_param($stmt, "s", $categoria);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
 
-    if ($result && mysqli_num_rows($result) > 0) {
-        while ($produto = mysqli_fetch_assoc($result)) {
-            echo '<div class="col-md-4">';
-            echo '<div class="card bg-white h-100">';
-            echo '<a href="produto_detalhes.php?id='.$produto['id'].'">';
-            echo '<img src="'.$produto['imagem'].'" class="card-img-top" alt="'.$produto['nome'].'" style="height:250px; object-fit:cover;">';
-            echo '</a>';
-            echo '<div class="card-body d-flex flex-column">';
-            echo '<a href="produto_detalhes.php?id='.$produto['id'].'" class="text-decoration-none text-dark">';
-            echo '<h5 class="card-title">'.$produto['nome'].'</h5>';
-            echo '</a>';
-            echo '<p class="card-text fw-bold text-success mb-3">R$ '.$produto['preco'].'</p>';
-            echo '<form method="POST" action="../controllers/adicionar_carrinho.php" class="mt-auto">';
-            echo '<input type="hidden" name="id" value="'.$produto['id'].'">';
-            echo '<input type="hidden" name="pagina" value="'.$_SERVER['REQUEST_URI'].'">';
-            echo '<button type="submit" class="btn btn-dark w-100">Adicionar ao Carrinho</button>';
-            echo '</form>';
-            echo '</div></div></div>';
+        if ($result && mysqli_num_rows($result) > 0) {
+            while ($produto = mysqli_fetch_assoc($result)) {
+                echo '<div class="col-md-4">';
+                echo '<div class="card bg-white h-100">';
+                echo '<a href="produto_detalhes.php?id='.$produto['id'].'">';
+                echo '<img src="'.$produto['imagem'].'" class="card-img-top" alt="'.$produto['nome'].'" style="height:250px; object-fit:cover;">';
+                echo '</a>';
+                echo '<div class="card-body d-flex flex-column">';
+                echo '<a href="produto_detalhes.php?id='.$produto['id'].'" class="text-decoration-none text-dark">';
+                echo '<h5 class="card-title">'.$produto['nome'].'</h5>';
+                echo '</a>';
+                echo '<p class="card-text fw-bold text-success mb-3">R$ '.$produto['preco'].'</p>';
+                echo '<form method="POST" action="../controllers/adicionar_carrinho.php" class="mt-auto">';
+                echo '<input type="hidden" name="id" value="'.$produto['id'].'">';
+                echo '<input type="hidden" name="pagina" value="'.$_SERVER['REQUEST_URI'].'">';
+                echo '<button type="submit" class="btn btn-dark w-100">Adicionar ao Carrinho</button>';
+                echo '</form>';
+                echo '</div></div></div>';
+            }
+        } else {
+            echo '<p class="text-center">Nenhum produto disponível nesta categoria.</p>';
         }
-    } else {
-        echo '<p class="text-center">Nenhum produto disponível nesta categoria.</p>';
-    }
 
-    mysqli_stmt_close($stmt);
-    mysqli_close($conexao);
-    ?>
+        mysqli_stmt_close($stmt);
+        mysqli_close($conexao);
+        ?>
     </div>
 </div>
 

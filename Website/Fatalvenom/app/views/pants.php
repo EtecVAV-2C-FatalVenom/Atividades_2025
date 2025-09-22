@@ -58,7 +58,6 @@ $logado = $logado_cliente || $logado_funcionario;
                 </li>
             </ul>
         </div>
-
     </div>
 </nav>
 
@@ -88,7 +87,9 @@ $logado = $logado_cliente || $logado_funcionario;
             echo '<input type="hidden" name="pagina" value="'.$_SERVER['REQUEST_URI'].'">';
             echo '<button type="submit" class="btn btn-dark w-100">Adicionar ao Carrinho</button>';
             echo '</form>';
-            echo '</div></div></div>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
         }
     } else {
         echo '<p class="text-center">Nenhum produto disponível nesta categoria.</p>';

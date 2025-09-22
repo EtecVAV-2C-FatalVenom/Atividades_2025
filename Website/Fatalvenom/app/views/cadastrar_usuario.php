@@ -48,7 +48,9 @@
                 </div>
                 <button type="submit" class="btn btn-dark w-100">Cadastrar</button>
             </form>
-            <p class="mt-3 text-center" style="text-decoration:underline;">Já tem uma conta? <a href="../views/login.php">Faça login aqui</a></p>
+            <p class="mt-3 text-center" style="text-decoration:underline;">
+                Já tem uma conta? <a href="../views/login.php">Faça login aqui</a>
+            </p>
         </div>
     </div>
 
