@@ -1,6 +1,7 @@
 <?php
 session_start();
-include_once("../../database/conexao.php");
+
+include_once("../../model/conexao.php");
 
 if (isset($_POST['acao']) && $_POST['acao'] == 'adicionar') {
     $nome = $_POST['nome'];
@@ -110,7 +111,7 @@ $result = mysqli_query($conexao, $sql);
     
     <form method="POST">
     <input type="hidden" name="acao" value="adicionar">
-    <div class="row g-2 align-items-center">
+    <div class="row g-2 align-items-center" style="padding:10px;">
         <div class="col-md-3"><input type="text" name="nome" placeholder="Nome" class="form-control" required></div>
         <div class="col-md-2"><input type="text" name="preco" placeholder="Preço" class="form-control" required></div>
         <div class="col-md-3"><input type="text" name="categoria" placeholder="Categoria" class="form-control" required></div>

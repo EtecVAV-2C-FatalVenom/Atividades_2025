@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("../../database/conexao.php");
+include_once("../../model/conexao.php");
 
 $id_cliente = isset($_SESSION['id_cliente']) ? $_SESSION['id_cliente'] : null;
 $id_funcionario = isset($_SESSION['id_funcionario']) ? $_SESSION['id_funcionario'] : null;

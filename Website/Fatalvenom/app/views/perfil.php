@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+include_once("../../model/conexao.php"); 
+
 if (!isset($_SESSION['id_cliente'])) {
     header("Location: login.php");
     exit();
@@ -14,7 +16,6 @@ if (isset($_SESSION['id_funcionario'])) {
 $name = isset($_SESSION['nome']) ? htmlspecialchars($_SESSION['nome']) : 'Nome do Usuário';
 $mail = isset($_SESSION['email']) ? htmlspecialchars($_SESSION['email']) : 'Email do Usuário';
 
-include_once("../../database/conexao.php"); 
 
 $userId = $_SESSION['id_cliente'];
 

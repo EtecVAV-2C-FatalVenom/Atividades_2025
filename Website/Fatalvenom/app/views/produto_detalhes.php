@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("../../database/conexao.php");
+include_once("../../model/conexao.php");
 
 $logado_cliente = isset($_SESSION['id_cliente']);
 $logado_funcionario = isset($_SESSION['id_funcionario']);

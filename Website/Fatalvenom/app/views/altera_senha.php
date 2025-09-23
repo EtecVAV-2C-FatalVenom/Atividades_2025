@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("../../database/conexao.php");
+include_once("../../model/conexao.php");
 
 if (!isset($_SESSION['id_funcionario']) && !isset($_SESSION['id_cliente'])) {
     header("Location: login.php");

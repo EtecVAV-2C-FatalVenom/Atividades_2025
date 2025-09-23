@@ -1,6 +1,7 @@
 <?php
 session_start();
-include_once("../../database/conexao.php");
+
+include_once("../../model/conexao.php");
 
 if (!isset($_SESSION['id_funcionario']) || !in_array($_SESSION['cargo'], ['Administrador', 'Gerente'])) {
     echo '<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#f8d7da;">
@@ -112,7 +113,7 @@ $result = mysqli_query($conexao, $sql);
         <h5>Adicionar Cliente</h5> 
         <form method="POST">
             <input type="hidden" name="acao" value="adicionar">
-            <div class="row g-2">
+            <div class="row g-2" style="padding:10px;">
                 <div class="col-md-3"><input type="text" name="nome" placeholder="Nome" class="form-control" required></div>
                 <div class="col-md-3"><input type="email" name="email" placeholder="Email" class="form-control" required></div>
                 <div class="col-md-3"><input type="text" name="nickname" placeholder="Nickname" class="form-control" required></div>
