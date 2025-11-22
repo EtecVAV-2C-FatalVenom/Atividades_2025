@@ -1,8 +1,23 @@
 <?php
 require "db.php";
 
-$email = isset($_POST['email']) ? $_POST['email'] : '';
-$senha = isset($_POST['senha']) ? $_POST['senha'] : '';
+header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+
+if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") {
+    exit;
+}
+
+$inputJSON = file_get_contents("php://input");
+$input = json_decode($inputJSON, true);
+
+$email = $_POST["email"] 
+         ?? ($input["email"] ?? null);
+
+$senha = $_POST["senha"] 
+         ?? ($input["senha"] ?? null);
 
 if(!$email || !$senha){
     echo json_encode(["status"=>"erro","mensagem"=>"Informe email e senha"]);
@@ -29,3 +44,4 @@ echo json_encode([
     "id_cliente"=>$cliente["id_cliente"],
     "nome"=>$cliente["nome"]
 ]);
+exit;
