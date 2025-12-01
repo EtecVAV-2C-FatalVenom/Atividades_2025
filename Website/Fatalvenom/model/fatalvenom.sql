@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 20, 2025 at 10:22 PM
+-- Host: localhost
+-- Generation Time: Dec 01, 2025 at 04:21 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -26,17 +26,45 @@ USE `fatalvenom`;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `carrinho`
+--
+
+CREATE TABLE IF NOT EXISTS `carrinho` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_cliente` int(11) NOT NULL,
+  `id_produto` int(11) NOT NULL,
+  `quantidade` int(11) NOT NULL DEFAULT 1,
+  `data_adicionado` datetime DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `id_cliente` (`id_cliente`),
+  KEY `id_produto` (`id_produto`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `carrinho`
+--
+
+INSERT INTO `carrinho` (`id`, `id_cliente`, `id_produto`, `quantidade`, `data_adicionado`) VALUES
+(1, 1, 1, 2, '2025-12-01 00:19:41'),
+(2, 1, 3, 1, '2025-12-01 00:19:41');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cliente`
 --
 
-CREATE TABLE `cliente` (
-  `id_cliente` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `cliente` (
+  `id_cliente` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) NOT NULL,
   `nickname` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL,
-  `telefone` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `telefone` varchar(25) NOT NULL,
+  PRIMARY KEY (`id_cliente`),
+  UNIQUE KEY `nickname` (`nickname`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cliente`
@@ -45,7 +73,7 @@ CREATE TABLE `cliente` (
 INSERT INTO `cliente` (`id_cliente`, `nome`, `nickname`, `email`, `senha`, `telefone`) VALUES
 (1, 'Maria Silvinha', 'Masilva', 'mariasilvinha@gmail.com', '$2y$10$dbIOs..m3IChpv8aJdUEBOeKOcrHaPZh4Uxg20iX8Qvbu0EfXYmHu', '119999999999'),
 (2, 'Miguel emo almeida', 'Sigma boy', 'mmiguel@gmail.com', '$2y$10$FYSMxKPtvcMupG.bn.gtPe1wwrSda4VlQvSP750wkvSOtFNrpDr1O', '11435783621'),
-(8, 'Michele', 'Mirtilo', 'michele@gmail.com', '$2y$10$q/0U.OazJUgnOzX/Q.A8eO.wsecqU4RreYma0u7GgSNtoqO8WSnNq', '12333333333333');
+(8, 'Michele', 'Mirtilo', 'michele@gmail.com', '$2y$10$NS9fbR97PIgiLmM9.GoecuZwkAXU5IDf7nkCnDjp.g8Gvzq3.n1P.', '12333333333333');
 
 -- --------------------------------------------------------
 
@@ -53,13 +81,15 @@ INSERT INTO `cliente` (`id_cliente`, `nome`, `nickname`, `email`, `senha`, `tele
 -- Table structure for table `funcionarios`
 --
 
-CREATE TABLE `funcionarios` (
-  `id_funcionario` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `funcionarios` (
+  `id_funcionario` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL,
-  `cargo` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `cargo` varchar(60) NOT NULL,
+  PRIMARY KEY (`id_funcionario`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `funcionarios`
@@ -76,15 +106,16 @@ INSERT INTO `funcionarios` (`id_funcionario`, `nome`, `email`, `senha`, `cargo`)
 -- Table structure for table `produto`
 --
 
-CREATE TABLE `produto` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `produto` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) NOT NULL,
   `descricao` text NOT NULL,
   `preco` decimal(10,2) NOT NULL,
   `imagem` varchar(500) NOT NULL,
   `estoque` int(11) NOT NULL,
-  `categoria` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `categoria` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `produto`
@@ -111,51 +142,15 @@ INSERT INTO `produto` (`id`, `nome`, `descricao`, `preco`, `imagem`, `estoque`, 
 (18, 'Calça baggy', 'Calça baggy preta', 845.00, 'https://ae01.alicdn.com/kf/S5ece349f69154689bd62fd5e4d931f1bt.jpg', 34, 'Calça');
 
 --
--- Indexes for dumped tables
+-- Constraints for dumped tables
 --
 
 --
--- Indexes for table `cliente`
+-- Constraints for table `carrinho`
 --
-ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`id_cliente`),
-  ADD UNIQUE KEY `nickname` (`nickname`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- Indexes for table `funcionarios`
---
-ALTER TABLE `funcionarios`
-  ADD PRIMARY KEY (`id_funcionario`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- Indexes for table `produto`
---
-ALTER TABLE `produto`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `cliente`
---
-ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `funcionarios`
---
-ALTER TABLE `funcionarios`
-  MODIFY `id_funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `produto`
---
-ALTER TABLE `produto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+ALTER TABLE `carrinho`
+  ADD CONSTRAINT `carrinho_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`),
+  ADD CONSTRAINT `carrinho_ibfk_2` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
